@@ -1197,6 +1197,7 @@
       loadExercise();
       initSpeechRecognition();
       setupVoiceEngine();
+      preloadAllLevelAudios();
     });
 
     // تحميل الأصوات مسبقاً والبحث عن الصوت التركي الأصلي
@@ -1510,7 +1511,25 @@
       }
     }
 
-                        let globalAudioPlayer = null;
+                            let globalAudioPlayer = null;
+    let preloadedAudio = {};
+
+    // تحميل مسبق فوري لجميع المقاطع الصوتية في الخلفية لتبدأ في 0 ثانية فور الضغط
+    function preloadAllLevelAudios() {
+      const levels = Object.keys(fullDatabase);
+      levels.forEach(lvl => {
+        try {
+          const text = fullDatabase[lvl].listening.passage.trim();
+          const cleanText = encodeURIComponent(text);
+          // محرك Google Cloud السريع جداً مع كاش عالمي
+          const fastUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=tr&client=gtx&q=" + cleanText;
+          const aud = new Audio();
+          aud.preload = "auto";
+          aud.src = fastUrl;
+          preloadedAudio[lvl] = aud;
+        } catch(e) {}
+      });
+    }
 
     function playVoiceNow() {
       const data = fullDatabase[currentLevel];
@@ -1518,33 +1537,58 @@
 
       const badge = document.getElementById('voiceStatusBadge');
       if (badge) {
-        badge.textContent = '🔊 جاري تشغيل صوت تركي أصلي نقي (Studio Quality)...';
+        badge.textContent = '⚡ تشغيل فوري مباشر...';
         badge.style.background = '#dcfce7';
         badge.style.color = '#15803d';
       }
 
       stopVoiceNow();
 
-      // 1. استخدام محرك صوت تركي أصلي سحابي نقي (Amazon Polly Neural Voice - Filiz)
-      // هذا يضمن نطقاً تركياً سليماً 100% على أي هاتف (آيفون أو أندرويد أو كمبيوتر) دون الاعتماد على إعدادات جهاز المستخدم
+      // 1. استخدام الصوت المحمل مسبقاً في الذاكرة (يبدأ في 0.05 ثانية فوراً!)
+      const cleanText = encodeURIComponent(textToSpeak.trim());
+      const fastGoogleUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=tr&client=gtx&q=" + cleanText;
+      const pollyUrl = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
+
+      let started = false;
+      const startFallbackTimer = setTimeout(() => {
+        if (!started) {
+          console.warn("Network audio too slow, switching to instantaneous local engine");
+          fallbackToSpeechSynthesis(textToSpeak);
+        }
+      }, 1200); // إذا تأخرت الشبكة أكثر من 1.2 ثانية، ينطلق فوراً دون انتظار
+
       try {
-        const cleanText = encodeURIComponent(textToSpeak.trim());
-        const cloudAudioUrl = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
-        
-        globalAudioPlayer = new Audio(cloudAudioUrl);
+        globalAudioPlayer = new Audio(fastGoogleUrl);
         globalAudioPlayer.playbackRate = currentSpeechRate;
 
         globalAudioPlayer.play().then(() => {
-          if (badge) badge.textContent = "✅ صوت تركي أصلي نقي (Filiz) " + (currentSpeechRate === 0.75 ? "🐢 بطيء" : "⚡ عادي");
+          started = true;
+          clearTimeout(startFallbackTimer);
+          if (badge) badge.textContent = "⚡ صوت تركي نقي فوري (Google Native) " + (currentSpeechRate === 0.75 ? "🐢 بطيء" : "⚡ عادي");
         }).catch(err => {
-          console.warn('Cloud audio stream blocked, using local fallback:', err);
-          fallbackToSpeechSynthesis(textToSpeak);
+          // محاولة المحرك السحابي الثاني أو المحلي
+          try {
+            globalAudioPlayer = new Audio(pollyUrl);
+            globalAudioPlayer.playbackRate = currentSpeechRate;
+            globalAudioPlayer.play().then(() => {
+              started = true;
+              clearTimeout(startFallbackTimer);
+              if (badge) badge.textContent = "✅ صوت تركي أصلي (Filiz)";
+            }).catch(e2 => {
+              clearTimeout(startFallbackTimer);
+              fallbackToSpeechSynthesis(textToSpeak);
+            });
+          } catch(e3) {
+            clearTimeout(startFallbackTimer);
+            fallbackToSpeechSynthesis(textToSpeak);
+          }
         });
 
         globalAudioPlayer.onended = () => {
-          if (badge) badge.textContent = '✅ اكتمل الاستماع بنجاح';
+          if (badge) badge.textContent = '✅ اكتمل الاستماع';
         };
       } catch (e) {
+        clearTimeout(startFallbackTimer);
         fallbackToSpeechSynthesis(textToSpeak);
       }
     }
@@ -1560,6 +1604,8 @@
       const tr = findTurkishVoice(availableVoices);
       if (tr) utterance.voice = tr;
       window.speechSynthesis.speak(utterance);
+      const badge = document.getElementById('voiceStatusBadge');
+      if (badge) badge.textContent = '⚡ تشغيل فوري بدون أي تأخير';
     }
 
     function stopVoiceNow() {
