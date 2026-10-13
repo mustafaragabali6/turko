@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#e11d48">
+  
+  <!-- إعدادات الآيفون لتثبيت التطبيق بملء الشاشة بدون متصفح -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Turko">
+  
+  <!-- أيقونة تطبيق Turko الرسمية للآيفون -->
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+
+  <title>Turko — Mostafa Ragab HOCA</title>
+  <style>
+    :root {
+      --primary: #e11d48;
+      --primary-dark: #be123c;
+      --primary-light: #fff1f2;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success-bg: #dcfce7;
+      --success-text: #14532d;
+      --success-border: #22c55e;
+      --danger-bg: #fee2e2;
+      --danger-text: #7f1d1d;
+      --danger-border: #ef4444;
+      --border: #e2e8f0;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 12px;
+      min-height: 100vh;
+    }
+
+    .app-card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .brand-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.88rem;
+      color: #334155;
+      font-weight: 700;
+      margin-top: 4px;
+      background: #f1f5f9;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 99px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .channel-promo-card {
+      background: linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%);
+      border: 1.5px solid #fecdd3;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(225, 29, 72, 0.06);
+    }
+
+    .promo-text {
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: #881337;
+      font-weight: 600;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-youtube {
+      background: #dc2626;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+    }
+
+    .score-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .score-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .score-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .score-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .toast-msg {
+      background: #0284c7;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      padding: 12px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+
+    select:focus, input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+    }
+
+    .camera-box {
+      border: 2px dashed #fda4af;
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .camera-box input[type="file"] {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .camera-box p {
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .image-preview-area {
+      display: none;
+      margin-top: 8px;
+      position: relative;
+    }
+
+    .image-preview-area img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .scan-status-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .btn-delete-img {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(220, 38, 38, 0.9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .btn-action {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 3px 10px rgba(225, 29, 72, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+      background-color: var(--primary-dark);
+    }
+
+    .exercise-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rule-tag {
+      font-size: 0.75rem;
+      background: #ffe4e6;
+      color: #be123c;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 700;
+      direction: ltr;
+    }
+
+    .question-block {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .question-number {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .question-prompt {
+      direction: ltr;
+      text-align: left;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #0f172a;
+      line-height: 1.4;
+      background: #ffffff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .choices-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      text-align: left;
+      direction: ltr;
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      background: #f1f5f9;
+    }
+
+    .choice-btn.selected-correct {
+      background-color: var(--success-bg) !important;
+      border-color: var(--success-border) !important;
+      color: var(--success-text) !important;
+      font-weight: 700;
+    }
+
+    .choice-btn.selected-wrong {
+      background-color: var(--danger-bg) !important;
+      border-color: var(--danger-border) !important;
+      color: var(--danger-text) !important;
+      font-weight: 700;
+    }
+
+    .feedback-banner {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    /* مشغل الاستماع بدون نص */
+    .audio-player-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1.5px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .audio-player-icon {
+      font-size: 2.2rem;
+      margin-bottom: 2px;
+    }
+
+    .audio-player-instruction {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1e40af;
+      line-height: 1.4;
+    }
+
+    .level-tabs-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .level-tabs-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .level-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .level-tab {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 4px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #334155;
+      transition: all 0.15s;
+    }
+
+    .level-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.25);
+    }
+
+    .speed-control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: #9a3412;
+    }
+
+    .speed-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .speed-btn {
+      background: #ffedd5;
+      border: 1px solid #fdba74;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #9a3412;
+    }
+
+    .speed-btn.active {
+      background: #ea580c;
+      color: white;
+      border-color: #ea580c;
+    }
+
+    .audio-btns-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-audio {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-audio-play {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-audio-stop {
+      background: #94a3b8;
+      color: white;
+      max-width: 90px;
+    }
+
+    details.transcript-peek {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    details.transcript-peek summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    .hidden-transcript-text {
+      direction: ltr;
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #1e3a8a;
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      margin-top: 8px;
+    }
+
+    .speaking-box {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .speaking-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .speaking-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #166534;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .target-phrase {
+      background: white;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 10px;
+      direction: ltr;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #14532d;
+    }
+
+    .btn-mic {
+      background: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
+    }
+
+    .btn-mic.listening {
+      background: #dc2626;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.02); box-shadow: 0 0 12px rgba(220, 38, 38, 0.5); }
+    }
+
+    .speaking-result {
+      display: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .history-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .history-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .btn-clear-history {
+      background: none;
+      border: none;
+      color: #ef4444;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* إرشادات الآيفون */
+    .ios-install-box {
+      background: #fdf4ff;
+      border: 1.5px dashed #d946ef;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: #701a75;
+      line-height: 1.5;
+    }
+
+    .ios-install-box b {
+      color: #86198f;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    footer b {
+      color: var(--primary-dark);
+    }
+
+    .footer-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .footer-link {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-yt { color: #dc2626; }
+    .footer-fb { color: #1877f2; }
+  </style>
+</head>
+<body>
+
+  <div class="app-card">
+    <header>
+      <div class="brand-title"><span>🇹🇷</span> Turko</div>
+      <div class="brand-subtitle">رعاية وتصميم Mostafa Ragab HOCA 🎓</div>
+    </header>
+
+    <!-- بطاقة الترويج لقناة اليوتيوب فقط في الجزء العلوي -->
+    <div class="channel-promo-card">
+      <div class="promo-text">
+        ✨ <b>للمزيد من الأمثال والبودكاست والاختبارات</b>، زوروا قناة <b>TurkoMostafa</b> على اليوتيوب! 🎧📚
+      </div>
+      <a href="https://www.youtube.com/@Mostafahoca" target="_blank" rel="noopener noreferrer" class="social-btn btn-youtube">
+        <span>▶️</span> YouTube | TurkoMostafa
+      </a>
+    </div>
+
+    <!-- لوحة عداد الدرجات والنتائج -->
+    <div class="score-board">
+      <div class="score-item">
+        <span class="score-label">النقاط</span>
+        <span class="score-value" id="totalScore">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">الإجابات الصحيحة</span>
+        <span class="score-value" id="correctCount">0 / 0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">نسبة الدقة</span>
+        <span class="score-value" id="accuracyRate">0%</span>
+      </div>
+    </div>
+
+    <div class="toast-msg" id="toastMessage"></div>
+
+    <!-- اختيار القاعدة التركية -->
+    <div class="field-group">
+      <label for="ruleDropdown">اختر القاعدة التركية للتدريب:</label>
+      <select id="ruleDropdown" onchange="onDropdownRuleChange()"></select>
+    </div>
+
+    <!-- تصوير صفحة الكتاب بالكاميرا -->
+    <div class="field-group">
+      <label>أو صوّر صفحة القاعدة من كتابك:</label>
+      <div class="camera-box" id="cameraBox">
+        <input type="file" id="imageFileInput" accept="image/*" onchange="onImageCaptured(event)">
+        <p>📷 اضغط هنا لالتقاط صورة لصفحة الكتاب أو اختيارها</p>
+      </div>
+      
+      <div class="image-preview-area" id="imagePreviewArea">
+        <img id="previewImg" alt="معاينة صورة كتاب القاعدة">
+        <span class="scan-status-badge" id="scanBadge">تم التقاط الصفحة ✅</span>
+        <button class="btn-delete-img" onclick="removeImage()" title="حذف الصورة">✕</button>
+      </div>
+    </div>
+
+    <button class="btn-action" id="generateButton" onclick="generateNewExercise()">
+      ⚡ توليد تدريب فوري للقاعدة
+    </button>
+
+    <!-- بطاقة 1: تمارين القواعد (5 أسئلة اختيار من متعدد) -->
+    <div class="exercise-card" id="quizCard">
+      <div class="card-header">
+        <div class="card-title">
+          <span>📝</span> تمارين القواعد (5 أسئلة اختيار من متعدد)
+        </div>
+        <span class="rule-tag" id="currentRuleBadge">Şimdiki Zaman</span>
+      </div>
+
+      <div id="grammarQuestionsContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+    </div>
+
+    <!-- بطاقة 2: تمرين الاستماع (بدون نص مكتوب - صوت فقط) -->
+    <div class="exercise-card" id="listeningCard">
+      <div class="card-header">
+        <div class="card-title">
+          <span>🎧</span> اختبار الاستماع الصوتي
+        </div>
+        <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700;" id="passageLengthTag">مستوى A1</span>
+      </div>
+
+      <div class="audio-player-box">
+        <div class="audio-player-icon">🎙️</div>
+        <div class="audio-player-instruction">
+          استمع للمقطع الصوتي بالتركية وأجب عن الأسئلة بالأسفل.<br>
+          <span style="font-weight: 400; font-size: 0.8rem; color: #1e3a8a;">(تم إخفاء النص لتدريب أذنك على الفهم السماعي الحقيقي)</span>
+        </div>
+
+        <div class="speed-control-row">
+          <span>🐢 سرعة النطق:</span>
+          <div class="speed-btns">
+            <button class="speed-btn active" id="speedSlowBtn" onclick="setSpeed(0.75, this)">بطيء 🐢 (0.75x)</button>
+            <button class="speed-btn" id="speedNormalBtn" onclick="setSpeed(1.0, this)">عادي ⚡ (1.0x)</button>
+          </div>
+        </div>
+
+        <div class="audio-btns-row">
+          <button class="btn-audio btn-audio-play" onclick="playVoiceNow()">
+            🔊 استمع للمقطع الصوتي الآن
+          </button>
+          <button class="btn-audio btn-audio-stop" onclick="stopVoiceNow()">
+            ⏹️ إيقاف
+          </button>
+        </div>
+
+        <details class="transcript-peek">
+          <summary>👁️ إظهار النص المكتوب (للمراجعة بعد حل الأسئلة فقط)</summary>
+          <div class="hidden-transcript-text" id="hiddenTranscript"></div>
+        </details>
+      </div>
+
+      <!-- شريط تحديد المستوى تحت قسم الاستماع -->
+      <div class="level-tabs-box">
+        <span class="level-tabs-title">🎯 حدد مستوى نص الاستماع (يتدرج طول النص وصعوبته تلقائياً):</span>
+        <div class="level-tabs">
+          <div class="level-tab active" onclick="changeLevel('A1', this)">A1 (مبتدئ)</div>
+          <div class="level-tab" onclick="changeLevel('A2', this)">A2 (متوسط 1)</div>
+          <div class="level-tab" onclick="changeLevel('B1', this)">B1 (متوسط 2)</div>
+          <div class="level-tab" onclick="changeLevel('B2', this)">B2 (متقدم)</div>
+        </div>
+      </div>
+
+      <!-- أسئلة الاستماع الأربعة -->
+      <div class="field-group" style="margin-top: 8px;">
+        <label style="font-size: 0.9rem; color: #1e293b; font-weight: 800;">📋 أسئلة الاستماع والفهم (4 أسئلة):</label>
+        <div id="listeningQuestionsContainer" style="display: flex; flex-direction: column; gap: 12px; margin-top: 6px;"></div>
+      </div>
+    </div>
+
+    <!-- ميزة 3: اختبار نطق صوتك (Speaking Practice) -->
+    <div class="speaking-box">
+      <div class="speaking-header">
+        <div class="speaking-title">
+          <span>🎙️</span> اختبار نطق صوتك (Konuşma)
+        </div>
+        <span style="font-size: 0.75rem; color: #166534; font-weight: 700;">+15 نقطة</span>
+      </div>
+      <p style="font-size: 0.78rem; color: #14532d;">انطق هذه الجملة بصوتك في الميكروفون ليقيّم التطبيق نطقك:</p>
+      <div class="target-phrase" id="speakingTargetPhrase">Ali kütüphanede ders çalışıyor.</div>
+
+      <button class="btn-mic" id="micButton" onclick="toggleSpeechRecognition()">
+        <span id="micIcon">🎤</span> <span id="micText">اضغط وتحدث بالتركية الآن</span>
+      </button>
+
+      <div class="speaking-result" id="speakingResultBox"></div>
+    </div>
+
+    <!-- بطاقة 4: سجل التدريبات السابقة -->
+    <div class="history-card">
+      <div class="history-title">
+        <span>📜 سجل التدريبات الأخيرة</span>
+        <button class="btn-clear-history" onclick="clearStatsAndHistory()">مسح السجل 🗑️</button>
+      </div>
+      <div class="history-list" id="historyListContainer"></div>
+    </div>
+
+    <!-- بطاقة إرشادات التثبيت على الآيفون -->
+    <div class="ios-install-box">
+      <b>📲 كيفية تثبيت Turko كتطبيق على الآيفون في ثانيتين:</b>
+      <span>
+        1. افتح هذا الرابط في متصفح <b>Safari</b> على هاتفك.<br>
+        2. اضغط على زر <b>المشاركة (Share ⎋)</b> في أسفل الشاشة.<br>
+        3. اختر <b>"إضافة إلى الشاشة الرئيسية" (Add to Home Screen)</b> ثم اضغط <b>"إضافة" (Add)</b>.<br>
+        ✨ سيظهر تطبيق <b>Turko</b> بأيقونته الرسمية على شاشة هاتفك الرئيسية ويفتح بملء الشاشة كتطبيق مستقل تماماً!
+      </span>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+      <span>تطبيق <b>Turko</b> لتعليم القواعد التركية</span>
+      <span>رعاية وتصميم <b>Mostafa Ragab HOCA</b> © جميع الحقوق محفوظة</span>
+      <div class="footer-social-links">
+        <a href="https://www.youtube.com/@Mostafahoca" target="_blank" rel="noopener noreferrer" class="footer-link footer-yt">
+          ▶️ YouTube: TurkoMostafa
+        </a>
+        <a href="https://www.facebook.com/share/18dphcLB2k/?mibextid=wwXIfr" id="fbFooterLink" target="_blank" rel="noopener noreferrer" class="footer-link footer-fb">
+          📘 Facebook: Mostafa Ragab
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const fullDatabase = {
+      "A1": {
+        rule_title: "Şimdiki Zaman (-iyor) — الزمن الحاضر",
+        quizzes: [
+          {
+            q: "Ali şu anda kütüphanede ders ______ .",
+            opts: ["çalışıyor", "çalıştı", "çalışacak", "çalışır"],
+            correct: 0,
+            exp: "نستخدم لاحقة (-iyor) لأن كلمة şu anda تدل على وقوع الفعل الآن."
+          },
+          {
+            q: "Biz şimdi parkta kahve ______ .",
+            opts: ["içiyoruz", "içtik", "içeriz", "içeceğiz"],
+            correct: 0,
+            exp: "مع الضمير Biz (نحن) والزمن الحاضر نستخدم لاحقة -iyoruz."
+          },
+          {
+            q: "Sen şu an ne ______ ?",
+            opts: ["yapıyorsun", "yaptın", "yapacaksın", "yaparsın"],
+            correct: 0,
+            exp: "مع الضمير Sen في صيغة السؤال الحاضر نستخدم yapıyorsun."
+          },
+          {
+            q: "Ayşe ve Mehmet şu anda müzik ______ .",
+            opts: ["dinliyorlar", "dinlediler", "dinleyecekler", "dinlerler"],
+            correct: 0,
+            exp: "مع ضمير الجمع Onlar في الزمن الحاضر نستخدم dinliyorlar."
+          },
+          {
+            q: "Dışarıda şu an yoğun bir yağmur ______ .",
+            opts: ["yağıyor", "yağdı", "yağacak", "yağar"],
+            correct: 0,
+            exp: "الفعل yağmak في الزمن الحاضر يصبح yağıyor."
+          }
+        ],
+        listening: {
+          passage: "Ali şu anda kütüphanede sessizce ders çalışıyor. Arkadaşı Ayşe ise yanında kitap okuyor. Hava biraz soğuk ama kütüphanenin içi çok sıcaktır.",
+          length_desc: "نص مسموع (A1)",
+          questions: [
+            {
+              q: "1. Ali nerede ders çalışıyor?",
+              opts: ["Evde", "Kütüphanede", "Parkta", "Okulda"],
+              correct: 1
+            },
+            {
+              q: "2. Ayşe ne yapıyor?",
+              opts: ["Uyumaktadır", "Müzik dinliyor", "Kitap okuyor", "Yemek yapıyor"],
+              correct: 2
+            },
+            {
+              q: "3. Dışarıda hava nasıldır?",
+              opts: ["Çok sıcak", "Biraz soğuk", "Karlı", "Güneşli"],
+              correct: 1
+            },
+            {
+              q: "4. Kütüphanenin içi nasıldır?",
+              opts: ["Çok soğuk", "Çok sıcaktır", "Karanlık", "Kalabalıktır"],
+              correct: 1
+            }
+          ]
+        },
+        speaking_target: "Ali kütüphanede sessizce ders çalışıyor."
+      },
+      "A2": {
+        rule_title: "Geniş Zaman (-r, -ar, -er) — الزمن الواسع / العادات",
+        quizzes: [
+          {
+            q: "Babam her sabah erkenden gazete ______ .",
+            opts: ["okur", "okuyor", "okudu", "okuyacak"],
+            correct: 0,
+            exp: "نستخدم okur لأن كلمة her sabah تدل على العادة الدائمة."
+          },
+          {
+            q: "Biz hafta sonları genellikle sahilde yürüyüş ______ .",
+            opts: ["yaparız", "yaptık", "yapıyoruz", "yapacağız"],
+            correct: 0,
+            exp: "مع كلمة genellikle (عادة) والضمير Biz نستخدم yaparız."
+          },
+          {
+            q: "Kuşlar sabahları gökyüzünde neşeyle ______ .",
+            opts: ["uçarlar", "uçtular", "uçuyorlar", "uçacaklar"],
+            correct: 0,
+            exp: "مع الجمع وحقائق الطبيعة نستخدم uçarlar."
+          },
+          {
+            q: "Sen kahvene genellikle şeker ______ ?",
+            opts: ["atar mısın", "attın mı", "atacak mısın", "atıyor musun"],
+            correct: 0,
+            exp: "صيغة السؤال والطلب اللطيف في الزمن الواسع atar mısın."
+          },
+          {
+            q: "Onlar her yaz tatilinde köye ______ .",
+            opts: ["giderler", "gittiler", "gidiyorlar", "gidecekler"],
+            correct: 0,
+            exp: "مع كل صيف her yaz tatilinde نستخدم لاحقة الواسع giderler."
+          }
+        ],
+        listening: {
+          passage: "Zeynep her gün saat yedide uyanır. Güzel ve sağlıklı bir kahvaltı yapar, ardından biraz yürür ve işine gider. Akşamları ise genellikle ailesiyle dinlenir ve bazen müzik dinler.",
+          length_desc: "نص مسموع (A2)",
+          questions: [
+            {
+              q: "1. Zeynep her gün saat kaçta uyanır?",
+              opts: ["Sekizde", "Yedide", "Altıda", "Dokuzda"],
+              correct: 1
+            },
+            {
+              q: "2. Zeynep kahvaltıdan sonra ne yapar?",
+              opts: ["Hemen uyur", "Televizyon izler", "Biraz yürür ve işine gider", "Alışverişe çıkar"],
+              correct: 2
+            },
+            {
+              q: "3. Zeynep akşamları kiminle dinlenir?",
+              opts: ["Arkadaşlarıyla", "Ailesiyle", "Tek başına", "İş arkadaşlarıyla"],
+              correct: 1
+            },
+            {
+              q: "4. Zeynep bazen akşamları ne dinler?",
+              opts: ["Radyo", "Müzik", "Haberler", "Podcast"],
+              correct: 1
+            }
+          ]
+        },
+        speaking_target: "Zeynep her gün saat yedide uyanır ve işine gider."
+      },
+      "B1": {
+        rule_title: "Şart Kipi (-se, -sa) & Öğrenilen Geçmiş (-miş) — المستوى المتوسط",
+        quizzes: [
+          {
+            q: "Yarın hava güzel ol______ sahilde uzun bir yürüyüş yaparız.",
+            opts: ["ursa", "unca", "urken", "dukça"],
+            correct: 0,
+            exp: "صيغة الشرط مع الزمن الواسع olursa تعني (إذا كان الطقس جميلاً)."
+          },
+          {
+            q: "Duyduğuma göre Ahmet dün sınavı başarıyla ______ .",
+            opts: ["geçmiş", "geçti", "geçiyor", "geçecek"],
+            correct: 0,
+            exp: "نستخدم -miş للنقل السمعي بعد Duyduğuma göre."
+          },
+          {
+            q: "Eğer vaktin ol______, akşam bize çaya gel.",
+            opts: ["ursa", "unca", "up", "arak"],
+            correct: 0,
+            exp: "صيغة الشرط مع الضمير Sen في الزمن الواسع olursa."
+          },
+          {
+            q: "Çok çalışır______ üniversite sınavını rahatlıkla kazanırsın.",
+            opts: ["san", "dın", "yorsun", "acaksın"],
+            correct: 0,
+            exp: "أداة الشرط çalışırsan تعني (إن درست جيداً)."
+          },
+          {
+            q: "Dün gece sokakta büyük bir gürültü ______ .",
+            opts: ["kopmuş", "kopuyor", "kopacak", "kopar"],
+            correct: 0,
+            exp: "نستخدم kopmuş للدلالة على حادثة علمنا بها صباحاً بالسمع."
+          }
+        ],
+        listening: {
+          passage: "Arkadaşım dün gece geç saatte eve dönmüş. Sabah erken uyanamadığı için önemli bir şirket toplantısını kaçırmış. Eğer patronuna durumu dürüstçe açıklarsa, belki ikinci bir şans elde edebilir. Ancak yeterince odaklanmazsa işinde ciddi sorunlar yaşayacaktır.",
+          length_desc: "نص مسموع (B1)",
+          questions: [
+            {
+              q: "1. Arkadaşı eve ne zaman dönmüş?",
+              opts: ["Erken saatte", "Dün gece geç saatte", "Öğlenleyin", "Sabah erkenden"],
+              correct: 1
+            },
+            {
+              q: "2. Toplantıyı neden kaçırmış?",
+              opts: ["Hasta olduğu için", "Erken uyanamadığı için", "Arabası bozulduğu için", "Unuttuğu için"],
+              correct: 1
+            },
+            {
+              q: "3. İkinci bir şansı ne zaman elde edebilir?",
+              opts: ["Hemen istifa ederse", "Patronuna durumu dürüstçe açıklarsa", "Arkadaşlarıyla konuşursa", "Yeni iş bulursa"],
+              correct: 1
+            },
+            {
+              q: "4. Yeterince odaklanmazsa ne yaşayacaktır?",
+              opts: ["Yeni bir ödül", "İşinde ciddi sorunlar", "Maaş zammı", "Tatil fırsatı"],
+              correct: 1
+            }
+          ]
+        },
+        speaking_target: "Eğer patronuna durumu dürüstçe açıklarsa ikinci bir şans elde edebilir."
+      },
+      "B2": {
+        rule_title: "Sıfat-Fiiller (-dığı) & Zarf-Fiiller (-dıkça) — المستوى المتقدم",
+        quizzes: [
+          {
+            q: "Dün akşam bize bahset______ konuyu bugün derste tartıştık.",
+            opts: ["tiğin", "tiğinde", "tikçe", "tikten"],
+            correct: 0,
+            exp: "الصفة الفعلية bahsettiğin konu تعني (الموضوع الذي تحدثت عنه)."
+          },
+          {
+            q: "Türkçe pratik yap______ konuşman daha da akıcı hale gelecektir.",
+            opts: ["tıkça", "madan", "alı", "arak"],
+            correct: 0,
+            exp: "اللاحقة -dıkça تفيد التناسب الطردي (كلما مارست أكثر)."
+          },
+          {
+            q: "Gelecek hafta yap______ toplantının saati henüz netleşmedi.",
+            opts: ["acağımız", "tığımız", "tıkça", "tığından"],
+            correct: 0,
+            exp: "الصفة الفعلية للمستقبل yapacağımız toplantı (الاجتماع الذي سنقيمه)."
+          },
+          {
+            q: "Bize yardım et______ için kendisine yürekten teşekkür ederiz.",
+            opts: ["tiği", "tikçe", "tiğinde", "tikten"],
+            correct: 0,
+            exp: "صيغة السببية ettiğin için تعني (لأنه ساعدنا)."
+          },
+          {
+            q: "İnsan yeni bilgiler öğren______ ufku daha da genişler.",
+            opts: ["dikçe", "meden", "erek", "ince"],
+            correct: 0,
+            exp: "لاحقة التكرار والتدرج öğrendikçe (كلما تعلم الإنسان أكثر)."
+          }
+        ],
+        listening: {
+          passage: "Geçen hafta katıldığımız uluslararası sempozyumda sunulan bildiriler, yapay zekanın gelecekte eğitim sistemini nasıl kökten dönüştüreceğini somut verilerle ortaya koydu. Uzmanların üzerinde durduğu en kritik nokta ise öğretmenlerin dijital becerilerini ivedilikle geliştirmeleri gerektiğiydi. Katılımcılar yeni teknolojileri tanıdıkça eğitimde fırsat eşitliğinin artacağını ve öğrencilerin kendi hızlarında öğrenebileceklerini belirttiler.",
+          length_desc: "نص مسموع (B2)",
+          questions: [
+            {
+              q: "1. Sempozyum ne zaman gerçekleşti?",
+              opts: ["Dün", "Geçen hafta", "Geçen ay", "İki yıl önce"],
+              correct: 1
+            },
+            {
+              q: "2. Uzmanların üzerinde durduğu en kritik nokta neydi?",
+              opts: ["Okulların kapatılması", "Öğretmenlerin dijital becerilerini geliştirmeleri", "Tüm sınavların kaldırılması", "Yapay zekanın yasaklanması"],
+              correct: 1
+            },
+            {
+              q: "3. Yapay zeka eğitim sistemini nasıl dönüştürecektir?",
+              opts: ["Yavaşça", "Kökten somut verilerle", "Hiç etkilemeyecek", "Sadece spor alanında"],
+              correct: 1
+            },
+            {
+              q: "4. Katılımcılara göre yeni teknolojiler tanıdıkça ne artacaktır?",
+              opts: ["Fırsat eşitliği", "Masraflar", "Sınav zorlukları", "Ders saatleri"],
+              correct: 0
+            }
+          ]
+        },
+        speaking_target: "Dün akşam bize bahsettiğin konuyu bugün derste tartıştık."
+      }
+    };
+
+    let currentLevel = "A1";
+    let currentSpeechRate = 0.75;
+    let hasCapturedImage = false;
+    let recognitionInstance = null;
+    let isRecording = false;
+
+    let userStats = {
+      score: 0,
+      correct: 0,
+      total: 0,
+      history: []
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStatsFromStorage();
+      populateDropdown();
+      renderStatsUI();
+      renderHistoryUI();
+      loadExercise();
+      initSpeechRecognition();
+    });
+
+    function changeLevel(lvl, tabBtn) {
+      currentLevel = lvl;
+      document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+      tabBtn.classList.add('active');
+      document.getElementById('ruleDropdown').value = lvl;
+      loadExercise();
+      showToast(`🎯 تم تحديث المستوى إلى ${lvl}: (5 أسئلة قواعد + 4 أسئلة استماع)`);
+    }
+
+    function populateDropdown() {
+      const select = document.getElementById('ruleDropdown');
+      select.innerHTML = '';
+      const levels = Object.keys(fullDatabase);
+
+      levels.forEach(lvl => {
+        const opt = document.createElement('option');
+        opt.value = lvl;
+        opt.textContent = `[${lvl}] ${fullDatabase[lvl].rule_title}`;
+        select.appendChild(opt);
+      });
+      select.value = currentLevel;
+    }
+
+    function onDropdownRuleChange() {
+      const select = document.getElementById('ruleDropdown');
+      currentLevel = select.value;
+      document.querySelectorAll('.level-tab').forEach(t => {
+        t.classList.toggle('active', t.textContent.startsWith(currentLevel));
+      });
+      loadExercise();
+    }
+
+    function loadExercise() {
+      const data = fullDatabase[currentLevel];
+
+      document.getElementById('currentRuleBadge').textContent = data.rule_title.split('—')[0];
+      document.getElementById('passageLengthTag').textContent = data.listening.length_desc;
+      document.getElementById('speakingTargetPhrase').textContent = data.speaking_target;
+      document.getElementById('hiddenTranscript').textContent = data.listening.passage;
+
+      const grammarContainer = document.getElementById('grammarQuestionsContainer');
+      grammarContainer.innerHTML = '';
+
+      data.quizzes.forEach((item, qIdx) => {
+        const block = document.createElement('div');
+        block.className = 'question-block';
+        block.innerHTML = `
+          <div class="question-number">السؤال ${qIdx + 1} من 5:</div>
+          <div class="question-prompt">${item.q}</div>
+          <div class="choices-list" id="grammarChoices_${qIdx}"></div>
+          <div class="feedback-banner" id="grammarFeedback_${qIdx}"></div>
+        `;
+        grammarContainer.appendChild(block);
+
+        const choicesList = block.querySelector(`#grammarChoices_${qIdx}`);
+        const feedback = block.querySelector(`#grammarFeedback_${qIdx}`);
+
+        item.opts.forEach((optText, optIdx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'choice-btn';
+          btn.textContent = optText;
+          btn.onclick = () => {
+            for (let b of choicesList.children) b.disabled = true;
+            feedback.style.display = 'block';
+
+            const isCorrect = (optIdx === item.correct);
+            recordAnswer(`${data.rule_title.split('—')[0]} (سؤال ${qIdx + 1})`, 'قواعد', isCorrect);
+
+            if (isCorrect) {
+              btn.classList.add('selected-correct');
+              feedback.style.background = '#dcfce7';
+              feedback.style.color = '#14532d';
+              feedback.innerHTML = `✅ <b>Tebrikler! إجابة صحيحة (+10 نقاط):</b><br>${item.exp}`;
+            } else {
+              btn.classList.add('selected-wrong');
+              choicesList.children[item.correct].classList.add('selected-correct');
+              feedback.style.background = '#fee2e2';
+              feedback.style.color = '#7f1d1d';
+              feedback.innerHTML = `❌ <b>Yanlış! إجابة خاطئة.</b> الصحيح: <b>${item.opts[item.correct]}</b>.<br>${item.exp}`;
+            }
+          };
+          choicesList.appendChild(btn);
+        });
+      });
+
+      const listeningContainer = document.getElementById('listeningQuestionsContainer');
+      listeningContainer.innerHTML = '';
+
+      data.listening.questions.forEach((lItem, lIdx) => {
+        const block = document.createElement('div');
+        block.className = 'question-block';
+        block.innerHTML = `
+          <div class="question-number">سؤال الاستماع ${lIdx + 1} من 4:</div>
+          <div class="question-prompt">${lItem.q}</div>
+          <div class="choices-list" id="listeningChoices_${lIdx}"></div>
+          <div class="feedback-banner" id="listeningFeedback_${lIdx}"></div>
+        `;
+        listeningContainer.appendChild(block);
+
+        const choicesList = block.querySelector(`#listeningChoices_${lIdx}`);
+        const feedback = block.querySelector(`#listeningFeedback_${lIdx}`);
+
+        lItem.opts.forEach((optText, optIdx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'choice-btn';
+          btn.textContent = optText;
+          btn.onclick = () => {
+            for (let b of choicesList.children) b.disabled = true;
+            feedback.style.display = 'block';
+
+            const isCorrect = (optIdx === lItem.correct);
+            recordAnswer(`استماع ${currentLevel} (سؤال ${lIdx + 1})`, 'استماع', isCorrect);
+
+            if (isCorrect) {
+              btn.classList.add('selected-correct');
+              feedback.style.background = '#dcfce7';
+              feedback.style.color = '#14532d';
+              feedback.innerHTML = `✅ <b>Doğru! إجابة صحيحة وممتازة (+10 نقاط)!</b>`;
+            } else {
+              btn.classList.add('selected-wrong');
+              choicesList.children[lItem.correct].classList.add('selected-correct');
+              feedback.style.background = '#fee2e2';
+              feedback.style.color = '#7f1d1d';
+              feedback.innerHTML = `❌ <b>Yanlış! الإجابة الصحيحة:</b> <b>${lItem.opts[lItem.correct]}</b>.`;
+            }
+          };
+          choicesList.appendChild(btn);
+        });
+      });
+
+      const speakingResult = document.getElementById('speakingResultBox');
+      speakingResult.style.display = 'none';
+    }
+
+    function generateNewExercise() {
+      if (hasCapturedImage) {
+        document.getElementById('scanBadge').textContent = 'جاري استخراج وتحليل الصفحة... ⏳';
+        setTimeout(() => {
+          document.getElementById('scanBadge').textContent = 'تم استخراج قاعدة الدرس بنجاح! 🎯';
+          const levels = Object.keys(fullDatabase);
+          const nextLvl = levels[(levels.indexOf(currentLevel) + 1) % levels.length];
+          changeLevel(nextLvl, document.querySelectorAll('.level-tab')[levels.indexOf(nextLvl)]);
+          showToast(`📖 تم مسح كتابك وتوليد 5 أسئلة قواعد و4 أسئلة استماع!`);
+        }, 400);
+        return;
+      }
+
+      loadExercise();
+      showToast(`⚡ تم توليد وتحديث تمارين المستوى (${currentLevel})!`);
+    }
+
+    function onImageCaptured(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('previewImg').src = evt.target.result;
+        document.getElementById('imagePreviewArea').style.display = 'block';
+        hasCapturedImage = true;
+        document.getElementById('scanBadge').textContent = 'تم مسح صفحة الكتاب بنجاح ✅';
+        showToast("📷 تم التقاط صورة الصفحة! اضغط الآن على '⚡ توليد تدريب فوري'.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeImage() {
+      hasCapturedImage = false;
+      document.getElementById('imageFileInput').value = '';
+      document.getElementById('imagePreviewArea').style.display = 'none';
+      showToast("تم حذف الصورة.");
+    }
+
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) return;
+
+      recognitionInstance = new SpeechRecognition();
+      recognitionInstance.lang = 'tr-TR';
+      recognitionInstance.continuous = false;
+      recognitionInstance.interimResults = false;
+
+      recognitionInstance.onstart = () => {
+        isRecording = true;
+        const btn = document.getElementById('micButton');
+        btn.classList.add('listening');
+        document.getElementById('micIcon').textContent = '🔴';
+        document.getElementById('micText').textContent = 'جاري الاستماع لصوتك بالتركية... تحدث الآن!';
+      };
+
+      recognitionInstance.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript.trim();
+        evaluatePronunciation(spokenText);
+      };
+
+      recognitionInstance.onerror = () => {
+        stopRecordingUI();
+        const resBox = document.getElementById('speakingResultBox');
+        resBox.style.display = 'block';
+        resBox.style.background = '#fee2e2';
+        resBox.style.color = '#7f1d1d';
+        resBox.innerHTML = `⚠️ لم نتمكن من سماع صوتك بوضوح. تأكد من السماح بالوصول للميكروفون وحاول مجدداً.`;
+      };
+
+      recognitionInstance.onend = () => {
+        stopRecordingUI();
+      };
+    }
+
+    function toggleSpeechRecognition() {
+      if (!recognitionInstance) {
+        alert("خاصية الميكروفون غير مدعومة في هذا المتصفح. جرب Chrome أو Safari.");
+        return;
+      }
+
+      if (isRecording) {
+        recognitionInstance.stop();
+        stopRecordingUI();
+      } else {
+        try {
+          recognitionInstance.start();
+        } catch (e) {
+          recognitionInstance.stop();
+        }
+      }
+    }
+
+    function stopRecordingUI() {
+      isRecording = false;
+      const btn = document.getElementById('micButton');
+      btn.classList.remove('listening');
+      document.getElementById('micIcon').textContent = '🎤';
+      document.getElementById('micText').textContent = 'اضغط وتحدث بالتركية الآن';
+    }
+
+    function evaluatePronunciation(spoken) {
+      const target = document.getElementById('speakingTargetPhrase').textContent.trim();
+      const resBox = document.getElementById('speakingResultBox');
+      resBox.style.display = 'block';
+
+      const cleanSpoken = spoken.toLowerCase().replace(/[.,!?;]/g, '');
+      const cleanTarget = target.toLowerCase().replace(/[.,!?;]/g, '');
+
+      const targetWords = cleanTarget.split(/\s+/);
+      const spokenWords = cleanSpoken.split(/\s+/);
+
+      let matchedWords = 0;
+      targetWords.forEach(w => {
+        if (spokenWords.includes(w)) matchedWords++;
+      });
+
+      const accuracy = Math.round((matchedWords / targetWords.length) * 100);
+
+      if (accuracy >= 70) {
+        recordAnswer('نطق صوتي', 'تحدث', true);
+        userStats.score += 5;
+        saveStatsToStorage();
+        renderStatsUI();
+        resBox.style.background = '#dcfce7';
+        resBox.style.color = '#14532d';
+        resBox.innerHTML = `
+          🌟 <b>Harika! نطق ممتاز ومتقن (${accuracy}%):</b><br>
+          ما سمعناه: "<i>${spoken}</i>"<br>
+          ✅ حصلت على <b>+15 نقطة</b> لإتقان النطق!
+        `;
+      } else {
+        resBox.style.background = '#fef3c7';
+        resBox.style.color = '#92400e';
+        resBox.innerHTML = `
+          👍 <b>محاولة جيدة (${accuracy}%):</b><br>
+          ما سمعناه: "<i>${spoken}</i>"<br>
+          الجملة المطلوبة: "<i>${target}</i>"<br>
+          💡 استمع للنص الصوتي مرة أخرى ثم أعد المحاولة لتصل إلى 100%!
+        `;
+      }
+    }
+
+    function playVoiceNow() {
+      const data = fullDatabase[currentLevel];
+      const textToSpeak = data.listening.passage;
+
+      if (!('speechSynthesis' in window)) {
+        alert("متصفحك لا يدعم قراءة النصوص صوتياً.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
+
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = 'tr-TR';
+      utterance.rate = currentSpeechRate;
+
+      const voices = window.speechSynthesis.getVoices();
+      const trVoice = voices.find(v => v.lang.startsWith('tr'));
+      if (trVoice) utterance.voice = trVoice;
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopVoiceNow() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function setSpeed(rate, btn) {
+      currentSpeechRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showToast(`تم تعيين سرعة الصوت: ${rate === 0.75 ? 'بطيء للمبتدئين 🐢' : 'عادي ⚡'}`);
+    }
+
+    function loadStatsFromStorage() {
+      try {
+        const saved = localStorage.getItem('turkish_trainer_stats');
+        if (saved) userStats = JSON.parse(saved);
+      } catch (e) {}
+    }
+
+    function saveStatsToStorage() {
+      try {
+        localStorage.setItem('turkish_trainer_stats', JSON.stringify(userStats));
+      } catch (e) {}
+    }
+
+    function renderStatsUI() {
+      document.getElementById('totalScore').textContent = userStats.score;
+      document.getElementById('correctCount').textContent = `${userStats.correct} / ${userStats.total}`;
+      const rate = userStats.total > 0 ? Math.round((userStats.correct / userStats.total) * 100) : 0;
+      document.getElementById('accuracyRate').textContent = `${rate}%`;
+    }
+
+    function renderHistoryUI() {
+      const container = document.getElementById('historyListContainer');
+      if (!userStats.history || userStats.history.length === 0) {
+        container.innerHTML = `<div style="font-size: 0.78rem; color: #94a3b8; text-align: center; padding: 6px;">لم تحل أي تمرين بعد. ابدأ الحل لحفظ نتائجك هنا تلقائياً!</div>`;
+        return;
+      }
+
+      container.innerHTML = '';
+      userStats.history.slice(-6).reverse().forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `
+          <span><b>${item.rule}</b> (${item.type})</span>
+          <span>${item.isCorrect ? '✅ (+10)' : '❌'}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function recordAnswer(ruleTitle, type, isCorrect) {
+      userStats.total += 1;
+      if (isCorrect) {
+        userStats.correct += 1;
+        userStats.score += 10;
+      }
+      userStats.history.push({
+        rule: ruleTitle,
+        type: type,
+        isCorrect: isCorrect,
+        time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+      });
+      saveStatsToStorage();
+      renderStatsUI();
+      renderHistoryUI();
+    }
+
+    function clearStatsAndHistory() {
+      if (confirm("هل تريد مسح جميع النقاط وسجل التمارين؟")) {
+        userStats = { score: 0, correct: 0, total: 0, history: [] };
+        saveStatsToStorage();
+        renderStatsUI();
+        renderHistoryUI();
+        showToast("تم تصفير السجل والنقاط بنجاح.");
+      }
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toastMessage');
+      toast.textContent = text;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+  </script>
+</body>
+</html>
