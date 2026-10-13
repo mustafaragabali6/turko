@@ -829,23 +829,30 @@
         <div class="audio-player-icon">🎙️</div>
         <div class="audio-player-instruction">
           استمع للمقطع الصوتي بالتركية وأجب عن الأسئلة بالأسفل.<br>
-          <span style="font-weight: 400; font-size: 0.8rem; color: #1e3a8a;">(تم إخفاء النص لتدريب أذنك على الفهم السماعي الحقيقي)</span>
+          <span style="font-weight: 400; font-size: 0.8rem; color: #1e40af;">(تم إخفاء النص لتدريب أذنك على الفهم السماعي الحقيقي)</span>
         </div>
-        <span class="voice-detected-tag" id="voiceStatusBadge">جاري تحضير الصوت التركي الأصلي...</span>
+
+        <!-- اختيار محرك الصوت: استوديو تركي أصلي أو فوري سريع -->
+        <div style="display: flex; gap: 6px; justify-content: center; margin: 4px 0;">
+          <button type="button" class="speed-btn active" id="engineStudioBtn" onclick="setAudioEngine('studio', this)">🎙️ صوت استوديو تركي أصلي</button>
+          <button type="button" class="speed-btn" id="engineInstantBtn" onclick="setAudioEngine('instant', this)">⚡ فوري بدون إنترنت (0 ثانية)</button>
+        </div>
+
+        <span class="voice-detected-tag" id="voiceStatusBadge">جاهز للاستماع بنطق تركي نقي</span>
 
         <div class="speed-control-row">
           <span>🐢 سرعة النطق:</span>
           <div class="speed-btns">
-            <button class="speed-btn active" id="speedSlowBtn" onclick="setSpeed(0.75, this)">بطيء 🐢 (0.75x)</button>
-            <button class="speed-btn" id="speedNormalBtn" onclick="setSpeed(1.0, this)">عادي ⚡ (1.0x)</button>
+            <button type="button" class="speed-btn active" id="speedSlowBtn" onclick="setSpeed(0.75, this)">بطيء 🐢 (0.75x)</button>
+            <button type="button" class="speed-btn" id="speedNormalBtn" onclick="setSpeed(1.0, this)">عادي ⚡ (1.0x)</button>
           </div>
         </div>
 
         <div class="audio-btns-row">
-          <button class="btn-audio btn-audio-play" onclick="playVoiceNow()">
+          <button type="button" class="btn-audio btn-audio-play" onclick="playVoiceNow()">
             🔊 استمع للمقطع الصوتي الآن
           </button>
-          <button class="btn-audio btn-audio-stop" onclick="stopVoiceNow()">
+          <button type="button" class="btn-audio btn-audio-stop" onclick="stopVoiceNow()">
             ⏹️ إيقاف
           </button>
         </div>
@@ -1512,21 +1519,37 @@
     }
 
                             let globalAudioPlayer = null;
-    let preloadedAudio = {};
+    let selectedAudioEngine = 'studio';
+    let audioPreloadCache = {};
 
-    // تحميل مسبق فوري لجميع المقاطع الصوتية في الخلفية لتبدأ في 0 ثانية فور الضغط
+    function setAudioEngine(engine, btn) {
+      selectedAudioEngine = engine;
+      document.getElementById('engineStudioBtn').classList.toggle('active', engine === 'studio');
+      document.getElementById('engineInstantBtn').classList.toggle('active', engine === 'instant');
+      const badge = document.getElementById('voiceStatusBadge');
+      if (engine === 'studio') {
+        badge.textContent = '🎙️ تم اختيار صوت الاستوديو التركي الأصلي (Amazon Polly Filiz)';
+        badge.style.background = '#dcfce7';
+        badge.style.color = '#15803d';
+      } else {
+        badge.textContent = '⚡ تم اختيار الصوت الفوري المباشر (0 ثانية وبدون إنترنت)';
+        badge.style.background = '#fef3c7';
+        badge.style.color = '#92400e';
+      }
+      showToast(engine === 'studio' ? 'تم اختيار: صوت الاستوديو التركي الأصلي' : 'تم اختيار: الصوت الفوري السريع');
+    }
+
     function preloadAllLevelAudios() {
-      const levels = Object.keys(fullDatabase);
+      const levels = ['A1', 'A2', 'B1', 'B2'];
       levels.forEach(lvl => {
         try {
           const text = fullDatabase[lvl].listening.passage.trim();
           const cleanText = encodeURIComponent(text);
-          // محرك Google Cloud السريع جداً مع كاش عالمي
-          const fastUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=tr&client=gtx&q=" + cleanText;
-          const aud = new Audio();
-          aud.preload = "auto";
-          aud.src = fastUrl;
-          preloadedAudio[lvl] = aud;
+          const url = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
+          const a = new Audio();
+          a.preload = "auto";
+          a.src = url;
+          audioPreloadCache[lvl] = a;
         } catch(e) {}
       });
     }
@@ -1534,78 +1557,74 @@
     function playVoiceNow() {
       const data = fullDatabase[currentLevel];
       const textToSpeak = data.listening.passage;
-
       const badge = document.getElementById('voiceStatusBadge');
+
+      stopVoiceNow();
+
+      if (selectedAudioEngine === 'instant') {
+        playInstantNativeVoice(textToSpeak, badge);
+        return;
+      }
+
       if (badge) {
-        badge.textContent = '⚡ تشغيل فوري مباشر...';
+        badge.textContent = '🔊 جاري تشغيل صوت الاستوديو التركي...';
         badge.style.background = '#dcfce7';
         badge.style.color = '#15803d';
       }
 
-      stopVoiceNow();
-
-      // 1. استخدام الصوت المحمل مسبقاً في الذاكرة (يبدأ في 0.05 ثانية فوراً!)
-      const cleanText = encodeURIComponent(textToSpeak.trim());
-      const fastGoogleUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=tr&client=gtx&q=" + cleanText;
-      const pollyUrl = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
-
-      let started = false;
-      const startFallbackTimer = setTimeout(() => {
-        if (!started) {
-          console.warn("Network audio too slow, switching to instantaneous local engine");
-          fallbackToSpeechSynthesis(textToSpeak);
-        }
-      }, 1200); // إذا تأخرت الشبكة أكثر من 1.2 ثانية، ينطلق فوراً دون انتظار
-
       try {
-        globalAudioPlayer = new Audio(fastGoogleUrl);
+        let audioToPlay = audioPreloadCache[currentLevel];
+        if (!audioToPlay || !audioToPlay.src) {
+          const cleanText = encodeURIComponent(textToSpeak.trim());
+          const url = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
+          audioToPlay = new Audio(url);
+          audioPreloadCache[currentLevel] = audioToPlay;
+        }
+
+        globalAudioPlayer = audioToPlay;
+        globalAudioPlayer.currentTime = 0;
         globalAudioPlayer.playbackRate = currentSpeechRate;
 
-        globalAudioPlayer.play().then(() => {
-          started = true;
-          clearTimeout(startFallbackTimer);
-          if (badge) badge.textContent = "⚡ صوت تركي نقي فوري (Google Native) " + (currentSpeechRate === 0.75 ? "🐢 بطيء" : "⚡ عادي");
-        }).catch(err => {
-          // محاولة المحرك السحابي الثاني أو المحلي
-          try {
-            globalAudioPlayer = new Audio(pollyUrl);
-            globalAudioPlayer.playbackRate = currentSpeechRate;
-            globalAudioPlayer.play().then(() => {
-              started = true;
-              clearTimeout(startFallbackTimer);
-              if (badge) badge.textContent = "✅ صوت تركي أصلي (Filiz)";
-            }).catch(e2 => {
-              clearTimeout(startFallbackTimer);
-              fallbackToSpeechSynthesis(textToSpeak);
-            });
-          } catch(e3) {
-            clearTimeout(startFallbackTimer);
-            fallbackToSpeechSynthesis(textToSpeak);
-          }
-        });
+        const playPromise = globalAudioPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            if (badge) badge.textContent = '✅ صوت تركي أصلي نقي (Filiz)';
+          }).catch(err => {
+            console.warn('Audio stream error, falling back immediately:', err);
+            playInstantNativeVoice(textToSpeak, badge);
+          });
+        }
 
         globalAudioPlayer.onended = () => {
           if (badge) badge.textContent = '✅ اكتمل الاستماع';
         };
       } catch (e) {
-        clearTimeout(startFallbackTimer);
-        fallbackToSpeechSynthesis(textToSpeak);
+        playInstantNativeVoice(textToSpeak, badge);
       }
     }
 
-    function fallbackToSpeechSynthesis(textToSpeak) {
-      if (!('speechSynthesis' in window)) return;
+    function playInstantNativeVoice(textToSpeak, badge) {
+      if (!('speechSynthesis' in window)) {
+        alert("متصفحك لا يدعم قراءة النصوص صوتياً.");
+        return;
+      }
       window.speechSynthesis.cancel();
       window.speechSynthesis.resume();
+
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = 'tr-TR';
       utterance.rate = currentSpeechRate;
+
       if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
       const tr = findTurkishVoice(availableVoices);
       if (tr) utterance.voice = tr;
+
       window.speechSynthesis.speak(utterance);
-      const badge = document.getElementById('voiceStatusBadge');
-      if (badge) badge.textContent = '⚡ تشغيل فوري بدون أي تأخير';
+      if (badge) {
+        badge.textContent = '⚡ يعمل الآن بالصوت الفوري السريع';
+        badge.style.background = '#fef3c7';
+        badge.style.color = '#92400e';
+      }
     }
 
     function stopVoiceNow() {
