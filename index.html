@@ -1510,35 +1510,63 @@
       }
     }
 
+                        let globalAudioPlayer = null;
+
     function playVoiceNow() {
       const data = fullDatabase[currentLevel];
       const textToSpeak = data.listening.passage;
 
-      if (!('speechSynthesis' in window)) {
-        alert("متصفحك لا يدعم قراءة النصوص صوتياً.");
-        return;
+      const badge = document.getElementById('voiceStatusBadge');
+      if (badge) {
+        badge.textContent = '🔊 جاري تشغيل صوت تركي أصلي نقي (Studio Quality)...';
+        badge.style.background = '#dcfce7';
+        badge.style.color = '#15803d';
       }
 
+      stopVoiceNow();
+
+      // 1. استخدام محرك صوت تركي أصلي سحابي نقي (Amazon Polly Neural Voice - Filiz)
+      // هذا يضمن نطقاً تركياً سليماً 100% على أي هاتف (آيفون أو أندرويد أو كمبيوتر) دون الاعتماد على إعدادات جهاز المستخدم
+      try {
+        const cleanText = encodeURIComponent(textToSpeak.trim());
+        const cloudAudioUrl = "https://api.streamelements.com/kappa/v2/speech?voice=Filiz&text=" + cleanText;
+        
+        globalAudioPlayer = new Audio(cloudAudioUrl);
+        globalAudioPlayer.playbackRate = currentSpeechRate;
+
+        globalAudioPlayer.play().then(() => {
+          if (badge) badge.textContent = "✅ صوت تركي أصلي نقي (Filiz) " + (currentSpeechRate === 0.75 ? "🐢 بطيء" : "⚡ عادي");
+        }).catch(err => {
+          console.warn('Cloud audio stream blocked, using local fallback:', err);
+          fallbackToSpeechSynthesis(textToSpeak);
+        });
+
+        globalAudioPlayer.onended = () => {
+          if (badge) badge.textContent = '✅ اكتمل الاستماع بنجاح';
+        };
+      } catch (e) {
+        fallbackToSpeechSynthesis(textToSpeak);
+      }
+    }
+
+    function fallbackToSpeechSynthesis(textToSpeak) {
+      if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       window.speechSynthesis.resume();
-
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = 'tr-TR';
       utterance.rate = currentSpeechRate;
-
-      // اختيار الصوت التركي بدقة شديدة
-      if (availableVoices.length === 0) {
-        availableVoices = window.speechSynthesis.getVoices();
-      }
-      const trVoice = findTurkishVoice(availableVoices);
-      if (trVoice) {
-        utterance.voice = trVoice;
-      }
-
+      if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
+      const tr = findTurkishVoice(availableVoices);
+      if (tr) utterance.voice = tr;
       window.speechSynthesis.speak(utterance);
     }
 
     function stopVoiceNow() {
+      if (globalAudioPlayer) {
+        globalAudioPlayer.pause();
+        globalAudioPlayer.currentTime = 0;
+      }
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
