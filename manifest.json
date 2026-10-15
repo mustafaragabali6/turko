@@ -1,0 +1,25 @@
+{
+  "name": "Turko — الشامل في قواعد ومحادثة اللغة التركية",
+  "short_name": "Turko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#e11d48",
+  "orientation": "portrait-primary",
+  "description": "تطبيق Turko لتعليم وتدريب قواعد ومحادثة اللغة التركية — إعداد وتطوير Mustafa Recep HOCA",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
