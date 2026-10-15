@@ -19808,7 +19808,7 @@
       populateDropdown();
       renderStatsUI();
       renderHistoryUI();
-      selectRule("basit_zamanlar", "simdiki_zaman", false);
+      selectRule("basit_zamanlar", "simdiki_zaman", false, false);
       initSpeechRecognition();
       setupVoiceEngine();
       // preloadAllAudios disabled on startup to prevent iOS WebKit crash
@@ -19822,7 +19822,7 @@
       Object.keys(database).forEach(secKey => {
         const sec = database[secKey];
         const item = document.createElement('div');
-        item.className = 'accordion-item' + (secKey === currentSectionId ? ' open active' : '');
+        item.className = 'accordion-item';
         item.id = `accordion_${secKey}`;
 
         item.innerHTML = `
@@ -19879,7 +19879,7 @@
       }
     }
 
-    function selectRule(secKey, ruleId, shouldToast = true) {
+    function selectRule(secKey, ruleId, shouldToast = true, openAccordion = true) {
       currentSectionId = secKey;
       currentRuleId = ruleId;
       currentQuestionBatchIndex = 0; // إعادة التعيين للمجموعة الأولى
@@ -19889,7 +19889,7 @@
 
       document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
       const activeItem = document.getElementById(`accordion_${secKey}`);
-      if (activeItem) {
+      if (activeItem && openAccordion) {
         activeItem.classList.add('open', 'active');
       }
 
