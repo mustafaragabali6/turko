@@ -69,7 +69,3 @@
    * Zıtlık ve Karşıtlık Ulaçları (-dığı halde, -mesine rağmen, -e karşın) — ظروف التناقض والاستدراك [B2]
    * Dolaylı Aktarım — نقل الكلام المباشر وغير المباشر [B2]
    * Bağlaçlar (çünkü, bu yüzden, bu nedenle, de/da, ile, ki) — أدوات الربط والتعليل والنتيجة [A2]
-
----
-Commit changes**.
-4. انتظر دقيقة واحدة، وافتح رابط موقعك على الهاتف أو الحاسوب لمعاينة المظهر الجديد الرائع!
